@@ -5,7 +5,7 @@
 
 # Directory Layout
 
-- [index.js][index.js]: Entry Point
-- [App.js][App.js]: Root Component
-- [components][components]: React Components
-- [utils][utils]: APIs
+- [index.js](index.js): Entry Point
+- [App.js](App.js): Root Component
+- [components](components): React Components
+- [utils](utils): APIs
