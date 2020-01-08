@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ShadowAPI from "./utils/shadow";
+import ShadowSubscriptions from "./components/Shadow";
 
-function App() {
+const eve_shadow = new ShadowAPI();
+
+export default function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button onClick={() => eve_shadow.publish_topic("daemon/vww/start")}>
+        Turn on Camera
+      </button>
+      <button onClick={() => eve_shadow.publish_topic("daemon/vww/stop")}>
+        Turn off Camera
+      </button>
+
+      <button onClick={() => eve_shadow.publish_get_shadow()}>Get</button>
+      <button
+        onClick={() =>
+          eve_shadow.publish_update_shadow({
+            state: {
+              reported: {
+                color: "nice!"
+              }
+            }
+          })
+        }
+      >
+        Update
+      </button>
+      <button onClick={() => eve_shadow.publish_delete_shadow()}>Delete</button>
+      <ShadowSubscriptions shadow={eve_shadow} />
+    </>
   );
 }
-
-export default App;
